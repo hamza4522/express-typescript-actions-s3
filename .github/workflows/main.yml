@@ -31,6 +31,6 @@ jobs:
       
     - name: Copy build to s3
       run: |
-        zip -r ./artifacts/project.zip .
+        zip -r ./artifacts/project.zip . -x node_modules/**\* .git/**\* dist/**\* dist/**\*     
         aws s3 sync ${GITHUB_WORKSPACE}/artifacts s3://${{ env.bucket }}/${GITHUB_REF#refs/heads/}/latest
     
