@@ -30,5 +30,7 @@ jobs:
       run: mkdir -p ./artifacts
       
     - name: Copy build to s3
-      run: aws s3 sync ${GITHUB_WORKSPACE}/artifacts s3://${{ env.bucket }}/${GITHUB_REF#refs/heads/}/latest
+      run: |
+        zip -r ./artifacts/project.zip .
+        aws s3 sync ${GITHUB_WORKSPACE}/artifacts s3://${{ env.bucket }}/${GITHUB_REF#refs/heads/}/latest
     
