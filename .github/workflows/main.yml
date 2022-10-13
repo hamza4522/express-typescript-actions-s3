@@ -17,5 +17,5 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.aws_access_key_id }}
         aws-secret-access-key: ${{ secrets.aws_secrest_access_key }}
-        aws-region: ${{ secrets.aws_regon }}
+        aws-region: ${{ secrets.aws_region }}
     - run: aws cp . s3://${{ env.bucket }}/ {{  github.head_ref }}/
